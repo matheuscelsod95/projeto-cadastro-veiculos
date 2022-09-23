@@ -1,0 +1,44 @@
+<h1 *ngIf="!isChange" mat-dialog-title>Adicionar veiculo</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Editar veiculo</h1>
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Placa</mat-label>
+    <input matInput [(ngModel)]="data.placa">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Chassi</mat-label>
+    <input matInput [(ngModel)]="data.chassi">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Renavam</mat-label>
+    <input matInput [(ngModel)]="data.renavam">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Modelo</mat-label>
+    <input matInput [(ngModel)]="data.modelo">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Marca</mat-label>
+    <input matInput [(ngModel)]="data.marca">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ano</mat-label>
+    <input matInput [(ngModel)]="data.ano">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Adicionar</button>
+  <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

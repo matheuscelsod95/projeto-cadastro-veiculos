@@ -1,0 +1,11 @@
+.header{
+    display: flex;
+}
+
+.example-spacer{
+    flex: auto
+}
+
+.tituloapp{
+    color: white
+}
