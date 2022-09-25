@@ -14,10 +14,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { VeiculoDialogComponent } from './shared/veiculo-dialog/veiculo-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { DelDialogComponent } from './shared/del-dialog/del-dialog.component';
 
 
 
@@ -27,7 +28,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    VeiculoDialogComponent
+    VeiculoDialogComponent,
+    DelDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,10 +41,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

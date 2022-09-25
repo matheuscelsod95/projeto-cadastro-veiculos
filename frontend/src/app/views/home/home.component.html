@@ -43,10 +43,10 @@
     <ng-container matColumnDef="acao">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let veiculo"> 
-        <button mat-icon-button (click)="editarVeiculo(veiculo)" color="primary" matTooltip = "Editar veículo" >
+        <button mat-icon-button (click)="openDialog(veiculo)" color="primary" matTooltip ="Editar veículo" >
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button (click)= "deletarVeiculo(veiculo.id)" color="primary" matTooltip = "Excluir veículo">
+        <button mat-icon-button (click)="openDelDialog(veiculo, '1000ms', '500ms')" color="primary" matTooltip ="Excluir veículo">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

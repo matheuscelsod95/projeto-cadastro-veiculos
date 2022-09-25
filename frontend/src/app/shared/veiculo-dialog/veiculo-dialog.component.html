@@ -40,5 +40,5 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancelar</button>
   <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Adicionar</button>
-  <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
 </div>

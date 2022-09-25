@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
+import { DelDialogComponent } from 'src/app/shared/del-dialog/del-dialog.component';
 import { VeiculoDialogComponent } from 'src/app/shared/veiculo-dialog/veiculo-dialog.component';
 
 export interface VeiculoCadastrado {
@@ -37,7 +39,7 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['id', 'placa', 'chassi', 'renavam', 'modelo', 'marca', 'ano', 'acao'];
   dataSource = VEICULO_DATA;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     
@@ -70,22 +72,39 @@ export class HomeComponent implements OnInit {
         if(this.dataSource.map(p => p.id).includes(result.id)){
           this.dataSource[result.id - 1] = result;
           this.table.renderRows();
+          this.snackBar.open(`Veículo ${result.modelo} foi alterado
+          .`, "X", {
+            duration: 2000,
+          });
         } else {
           this.dataSource.push(result);
-        this.table.renderRows();
+          this.table.renderRows();
+          this.snackBar.open(`Veículo ${result.modelo} foi adicionado.`, "X", {
+            duration: 2000,
+          });
+        }        
       }
-        
-    }
     });
 
-    }
-
-    editarVeiculo(veiculo: VeiculoCadastrado): void{
-      this.openDialog(veiculo);
-    }
-
-    deletarVeiculo(id:number): void {
-      this.dataSource = this.dataSource.filter(p => p.id !== id)
-    }
-
   }
+
+  openDelDialog(veiculo: VeiculoCadastrado, enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRef = this.dialog.open(DelDialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.dataSource = this.dataSource.filter(p => p.id !== veiculo.id);
+        this.snackBar.open(`Veículo ${veiculo.modelo} foi deletado.`, "X", {
+          duration: 2000,
+        });
+      }
+    });
+  }
+
+}
+  
+  
